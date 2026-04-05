@@ -2,7 +2,12 @@
 
 ## Overview
 
-The Finance Dashboard API is a production-ready RESTful backend service built to power personal and organizational finance tracking applications. It allows users to record, categorize, and analyze financial transactions — both income and expenses — through a clean, structured API. The system enforces a role-based access model so that different users (viewers, analysts, and administrators) interact with the platform within clearly defined boundaries. Beyond simple CRUD operations, the API provides aggregated insights such as monthly income/expense trends, per-category breakdowns, and real-time financial summaries — all computed directly on the database using MongoDB aggregation pipelines for efficiency and accuracy at scale.
+The Finance Dashboard API is a production-ready RESTful backend service built to power personal and organizational finance tracking applications. 
+
+## Key Features
+- **Transaction Management:** Record, categorize, and filter income and expenses.
+- **Role-Based Access Control:** Strict boundaries between Viewers (read-only), Analysts (manage own data), and Admins (platform oversight).
+- **Advanced Analytics:** Monthly trends, per-category breakdowns, and financial summaries computed efficiently via MongoDB aggregation pipelines instead of JavaScript arrays.
 
 ---
 
