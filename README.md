@@ -187,17 +187,22 @@ The system implements three roles with progressively increasing access levels:
 
 ## Design Decisions
 
-### Soft Delete Over Hard Delete for Transactions
-Financial records carry historical significance — deleting a transaction permanently would break audit trails, skew past summaries, and make recovery impossible. By using an `isDeleted: true` flag and a Mongoose pre-find middleware that automatically excludes deleted records from queries, the system achieves deletion from the user's perspective while preserving data integrity underneath. The pre-find hook is smart enough to step aside when `isDeleted` is explicitly passed in a query, making admin-level recovery queries possible without any special workarounds.
+### 1. Soft Delete Over Hard Delete
+- **Why:** Preserves financial history and audit trails.
+- **How:** Uses an `isDeleted: true` flag. A Mongoose `pre('find')` hook automatically hides deleted records from regular queries, while keeping them recoverable by admins.
 
-### MongoDB Aggregation Pipelines Over JavaScript-Level Computation
-Dashboard analytics — summaries, category breakdowns, and monthly trends — could theoretically be computed by fetching all transactions into Node.js and reducing them in memory. However, this approach would degrade badly as the dataset grows. Instead, all analytical logic lives inside MongoDB aggregation pipelines that execute directly on the database engine, transferring only the final computed result over the network. The monthly trends pipeline, for example, groups, pivots, and sorts entirely in the database before returning a 12-element array to the server.
+### 2. Aggregation Pipelines Over JS Arrays
+- **Why:** In-memory array `.reduce()` degrades as datasets grow.
+- **How:** Complex analytics (monthly trends, category breakdowns) run directly on the database engine using MongoDB Aggregation Pipelines, returning only the final optimized result.
 
-### Role Guard as a Factory Middleware
-The `authorize` function in `roleGuard.js` is designed as a higher-order function that accepts a variable number of allowed roles and returns a middleware. This pattern makes route definitions self-documenting: `authorize("admin", "analyst")` reads like a permission declaration at a glance, and adding a new role to an existing route requires changing a single string. The middleware is always chained after `protect`, which guarantees `req.user` is populated before the role is checked.
+### 3. Role Guard as a Factory Middleware
+- **Why:** Makes route definitions self-documenting (e.g., `authorize("admin", "analyst")`).
+- **How:** A higher-order function checks `req.user.role` before allowing access, making it trivial to add or update permissions.
 
-### Centralized Error Handling via ApiError
-Rather than writing `res.status(400).json(...)` blocks scattered across controllers and services, all errors are expressed by throwing an `ApiError` instance anywhere in the call stack. The global `errorHandler` middleware in Express catches every thrown error — including native Mongoose errors — and normalizes them into a consistent `{ success, statusCode, message, errors }` shape. This means the API always speaks the same language to its consumers, regardless of whether the error originated in a validator, a service, or an unexpected database failure.
+### 4. Centralized Error Handling
+- **Why:** Prevents scattered `res.status(400)` blocks and unhandled promise rejections.
+- **How:** Services throw an `ApiError`. A global Express `errorHandler` catches everything—including MongoDB native errors—and normalizes them into one consistent JSON format.
 
-### Rate Limiting Strategy
-The API uses two-tiered IP-based rate limiting via `express-rate-limit`. A strict `authLimiter` (10 requests per 15 minutes) is applied directly to `POST /auth/login` and `POST /auth/register` — the endpoints most vulnerable to brute-force and credential stuffing attacks. A broader `generalLimiter` (100 requests per 15 minutes) is applied globally to all `/api/v1/*` routes to prevent excessive scraping or API abuse. When a limit is exceeded, the API returns a `429 Too Many Requests` response with the same standardized error shape used across the entire project. Rate limit metadata (`RateLimit-Limit`, `RateLimit-Remaining`, `RateLimit-Reset`) is automatically included in response headers.
+### 5. Tiered Rate Limiting
+- **Why:** Protects against both brute-force attacks and general API scraping.
+- **How:** `authLimiter` strictly throttles login/registration (10 req / 15m), while `generalLimiter` protects all other endpoints (100 req / 15m).
