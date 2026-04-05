@@ -1,0 +1,1396 @@
+{
+  "info": {
+    "_postman_id": "a4b83030-e3cf-4583-95d3-1735a57fe2bc",
+    "name": "zorvyn backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "33231252"
+  },
+  "item": [
+    {
+      "name": "viewer",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Priya Viewer\",\r\n  \"email\": \"viewer@finance.com\",\r\n  \"password\": \"Viewer123\",\r\n  \"role\": \"viewer\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"viewer@finance.com\",\r\n  \"password\": \"Viewer123\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get my profile",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI4M2JlMDg1MTZkMDZiZjczNWE0ZSIsInJvbGUiOiJ2aWV3ZXIiLCJpYXQiOjE3NzU0MDQzMjAsImV4cCI6MTc3NTU3NzEyMH0.LrPOvC8msGDa915fwrGYI7KxGGzn0UbY8Bna8kyOQZY",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"john@example.com\",\r\n  \"password\": \"pass123\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/auth/me",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get my transactions",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI4M2JlMDg1MTZkMDZiZjczNWE0ZSIsInJvbGUiOiJ2aWV3ZXIiLCJpYXQiOjE3NzU0MDQzMjAsImV4cCI6MTc3NTU3NzEyMH0.LrPOvC8msGDa915fwrGYI7KxGGzn0UbY8Bna8kyOQZY",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"john@example.com\",\r\n  \"password\": \"pass123\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/transactions?page=1&limit=5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "transactions"
+              ],
+              "query": [
+                {
+                  "key": "type",
+                  "value": "income",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "category",
+                  "value": "Salary",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "1",
+                  "type": "text"
+                },
+                {
+                  "key": "limit",
+                  "value": "5",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get my transactions by id",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI4M2JlMDg1MTZkMDZiZjczNWE0ZSIsInJvbGUiOiJ2aWV3ZXIiLCJpYXQiOjE3NzU0MDQzMjAsImV4cCI6MTc3NTU3NzEyMH0.LrPOvC8msGDa915fwrGYI7KxGGzn0UbY8Bna8kyOQZY",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"john@example.com\",\r\n  \"password\": \"pass123\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/transactions/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "transactions",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "5",
+                  "disabled": true
+                },
+                {
+                  "key": "type",
+                  "value": "income",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "category",
+                  "value": "Salary",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "financial summary",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI4M2JlMDg1MTZkMDZiZjczNWE0ZSIsInJvbGUiOiJ2aWV3ZXIiLCJpYXQiOjE3NzU0MDQzMjAsImV4cCI6MTc3NTU3NzEyMH0.LrPOvC8msGDa915fwrGYI7KxGGzn0UbY8Bna8kyOQZY",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5000/api/v1/dashboard/summary",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "dashboard",
+                "summary"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Dashboard : Category Breakdown",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI4M2JlMDg1MTZkMDZiZjczNWE0ZSIsInJvbGUiOiJ2aWV3ZXIiLCJpYXQiOjE3NzU0MDQzMjAsImV4cCI6MTc3NTU3NzEyMH0.LrPOvC8msGDa915fwrGYI7KxGGzn0UbY8Bna8kyOQZY",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5000/api/v1/dashboard/categories",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "dashboard",
+                "categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "monthly trend",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI4M2JlMDg1MTZkMDZiZjczNWE0ZSIsInJvbGUiOiJ2aWV3ZXIiLCJpYXQiOjE3NzU0MDQzMjAsImV4cCI6MTc3NTU3NzEyMH0.LrPOvC8msGDa915fwrGYI7KxGGzn0UbY8Bna8kyOQZY",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5000/api/v1/dashboard/trends?year=2024",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "dashboard",
+                "trends"
+              ],
+              "query": [
+                {
+                  "key": "year",
+                  "value": "2024",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Recent activity",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI4M2JlMDg1MTZkMDZiZjczNWE0ZSIsInJvbGUiOiJ2aWV3ZXIiLCJpYXQiOjE3NzU0MDQzMjAsImV4cCI6MTc3NTU3NzEyMH0.LrPOvC8msGDa915fwrGYI7KxGGzn0UbY8Bna8kyOQZY",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5000/api/v1/dashboard/recent?limit=5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "dashboard",
+                "recent"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "5",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ANALYST",
+      "item": [
+        {
+          "name": "register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Arjun Analyst\",\r\n  \"email\": \"analyst@finance.com\",\r\n  \"password\": \"Analyst123\",\r\n  \"role\": \"analyst\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"analyst@finance.com\",\r\n  \"password\": \"Analyst123\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get my profile",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI4ZmQ4MDg1MTZkMDZiZjczNWE2YyIsInJvbGUiOiJhbmFseXN0IiwiaWF0IjoxNzc1NDA3MDk1LCJleHAiOjE3NzU1Nzk4OTV9.o4Cf8SuTQ6RZqYU1XL_nhtFsNX9klKkXmQKEIgP9xG0",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"john@example.com\",\r\n  \"password\": \"pass123\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/auth/me",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get Transaction",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI4ZmQ4MDg1MTZkMDZiZjczNWE2YyIsInJvbGUiOiJhbmFseXN0IiwiaWF0IjoxNzc1NDA3MDk1LCJleHAiOjE3NzU1Nzk4OTV9.o4Cf8SuTQ6RZqYU1XL_nhtFsNX9klKkXmQKEIgP9xG0",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"amount\": 1800,\r\n  \"type\": \"expense\",\r\n  \"category\": \"Healthcare\",\r\n  \"date\": \"2024-03-10\",\r\n  \"description\": \"Doctor visit and pharmacy\"\r\n}\r\n"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/transactions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "transactions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get all transactions",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI4ZmQ4MDg1MTZkMDZiZjczNWE2YyIsInJvbGUiOiJhbmFseXN0IiwiaWF0IjoxNzc1NDA3MDk1LCJleHAiOjE3NzU1Nzk4OTV9.o4Cf8SuTQ6RZqYU1XL_nhtFsNX9klKkXmQKEIgP9xG0",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"amount\": 1800,\r\n  \"type\": \"expense\",\r\n  \"category\": \"Healthcare\",\r\n  \"date\": \"2024-03-10\",\r\n  \"description\": \"Doctor visit and pharmacy\"\r\n}\r\n"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/transactions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "transactions"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "4",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete transaction",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI4ZmQ4MDg1MTZkMDZiZjczNWE2YyIsInJvbGUiOiJhbmFseXN0IiwiaWF0IjoxNzc1NDA3MDk1LCJleHAiOjE3NzU1Nzk4OTV9.o4Cf8SuTQ6RZqYU1XL_nhtFsNX9klKkXmQKEIgP9xG0",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"amount\": 1800,\r\n  \"type\": \"expense\",\r\n  \"category\": \"Healthcare\",\r\n  \"date\": \"2024-03-10\",\r\n  \"description\": \"Doctor visit and pharmacy\"\r\n}\r\n"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/transactions/69d290b208516d06bf735a71",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "transactions",
+                "69d290b208516d06bf735a71"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "4",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Dashboard: Recent Activity",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI4ZmQ4MDg1MTZkMDZiZjczNWE2YyIsInJvbGUiOiJhbmFseXN0IiwiaWF0IjoxNzc1NDA3MDk1LCJleHAiOjE3NzU1Nzk4OTV9.o4Cf8SuTQ6RZqYU1XL_nhtFsNX9klKkXmQKEIgP9xG0",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"amount\": 1800,\r\n  \"type\": \"expense\",\r\n  \"category\": \"Healthcare\",\r\n  \"date\": \"2024-03-10\",\r\n  \"description\": \"Doctor visit and pharmacy\"\r\n}\r\n"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/dashboard/recent?limit=5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "dashboard",
+                "recent"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "4",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get transactions by id",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI4ZmQ4MDg1MTZkMDZiZjczNWE2YyIsInJvbGUiOiJhbmFseXN0IiwiaWF0IjoxNzc1NDA3MDk1LCJleHAiOjE3NzU1Nzk4OTV9.o4Cf8SuTQ6RZqYU1XL_nhtFsNX9klKkXmQKEIgP9xG0",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"amount\": 1800,\r\n  \"type\": \"expense\",\r\n  \"category\": \"Healthcare\",\r\n  \"date\": \"2024-03-10\",\r\n  \"description\": \"Doctor visit and pharmacy\"\r\n}\r\n"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/transactions/69d290da08516d06bf735a7d",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "transactions",
+                "69d290da08516d06bf735a7d"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update transaction",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI4ZmQ4MDg1MTZkMDZiZjczNWE2YyIsInJvbGUiOiJhbmFseXN0IiwiaWF0IjoxNzc1NDA3MDk1LCJleHAiOjE3NzU1Nzk4OTV9.o4Cf8SuTQ6RZqYU1XL_nhtFsNX9klKkXmQKEIgP9xG0",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"amount\": 80000,\r\n  \"description\": \"April salary — includes performance bonus\"\r\n}\r\n"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/transactions/69d290da08516d06bf735a7d",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "transactions",
+                "69d290da08516d06bf735a7d"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "admin",
+      "item": [
+        {
+          "name": "get me",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI5MmY2MDg1MTZkMDZiZjczNWFhNiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NTQwNzg3NiwiZXhwIjoxNzc1NTgwNjc2fQ.7otB1JMBU_OFkz-8ONsL9iHujWcpMoFXl0UJCZCTATA",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"john@example.com\",\r\n  \"password\": \"pass123\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/auth/me",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Single User by ID",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI5MmY2MDg1MTZkMDZiZjczNWFhNiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NTQwNzk3OCwiZXhwIjoxNzc1NTgwNzc4fQ.kVOZAnA54lIPoLyEqI1AG1Ja5i400sU2NrjjdwlNggY",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"john@example.com\",\r\n  \"password\": \"pass123\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/users/69d292f608516d06bf735aa6",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "69d292f608516d06bf735aa6"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Sahil Admin\",\r\n  \"email\": \"admin@finance.com\",\r\n  \"password\": \"Admin123\",\r\n  \"role\": \"admin\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"admin@finance.com\",\r\n  \"password\": \"Admin123\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI5MmY2MDg1MTZkMDZiZjczNWFhNiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NTQwNzg3NiwiZXhwIjoxNzc1NTgwNjc2fQ.7otB1JMBU_OFkz-8ONsL9iHujWcpMoFXl0UJCZCTATA",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5000/api/v1/users?page=1&limit=5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update User Role",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI5MmY2MDg1MTZkMDZiZjczNWFhNiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NTQwNzg3NiwiZXhwIjoxNzc1NTgwNjc2fQ.7otB1JMBU_OFkz-8ONsL9iHujWcpMoFXl0UJCZCTATA",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"role\": \"viewer\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/users/69d281f508516d06bf735a49/role",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "69d281f508516d06bf735a49",
+                "role"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Transactions as Admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI5MmY2MDg1MTZkMDZiZjczNWFhNiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NTQwNzg3NiwiZXhwIjoxNzc1NTgwNjc2fQ.7otB1JMBU_OFkz-8ONsL9iHujWcpMoFXl0UJCZCTATA",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"amount\": 45000,\r\n  \"type\": \"expense\",\r\n  \"category\": \"Utilities\",\r\n  \"date\": \"2024-04-03\",\r\n  \"description\": \"Office utilities and internet\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/transactions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "transactions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get ALL Transactions (every user's data)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI5MmY2MDg1MTZkMDZiZjczNWFhNiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NTQwNzg3NiwiZXhwIjoxNzc1NTgwNjc2fQ.7otB1JMBU_OFkz-8ONsL9iHujWcpMoFXl0UJCZCTATA",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"amount\": 45000,\r\n  \"type\": \"expense\",\r\n  \"category\": \"Utilities\",\r\n  \"date\": \"2024-04-03\",\r\n  \"description\": \"Office utilities and internet\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/transactions?page=1&limit=20",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "transactions"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update ANY Transaction (even other users')",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI5MmY2MDg1MTZkMDZiZjczNWFhNiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NTQwNzg3NiwiZXhwIjoxNzc1NTgwNjc2fQ.7otB1JMBU_OFkz-8ONsL9iHujWcpMoFXl0UJCZCTATA",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"amount\": 85000,\r\n  \"description\": \"Admin corrected: salary + bonus included\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/transactions/69d290da08516d06bf735a7d",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "transactions",
+                "69d290da08516d06bf735a7d"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete ANY Transaction (soft delete)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI5MmY2MDg1MTZkMDZiZjczNWFhNiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NTQwNzg3NiwiZXhwIjoxNzc1NTgwNjc2fQ.7otB1JMBU_OFkz-8ONsL9iHujWcpMoFXl0UJCZCTATA",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"amount\": 85000,\r\n  \"description\": \"Admin corrected: salary + bonus included\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/transactions/69d290da08516d06bf735a7d",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "transactions",
+                "69d290da08516d06bf735a7d"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Financial Summary (ALL users combined)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI5MmY2MDg1MTZkMDZiZjczNWFhNiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NTQwNzg3NiwiZXhwIjoxNzc1NTgwNjc2fQ.7otB1JMBU_OFkz-8ONsL9iHujWcpMoFXl0UJCZCTATA",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"amount\": 85000,\r\n  \"description\": \"Admin corrected: salary + bonus included\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/dashboard/summary",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "dashboard",
+                "summary"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Category Breakdown (ALL users)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI5MmY2MDg1MTZkMDZiZjczNWFhNiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NTQwNzg3NiwiZXhwIjoxNzc1NTgwNjc2fQ.7otB1JMBU_OFkz-8ONsL9iHujWcpMoFXl0UJCZCTATA",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"amount\": 85000,\r\n  \"description\": \"Admin corrected: salary + bonus included\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/dashboard/categories",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "dashboard",
+                "categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Monthly Trends (ALL users, by year)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI5MmY2MDg1MTZkMDZiZjczNWFhNiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NTQwNzg3NiwiZXhwIjoxNzc1NTgwNjc2fQ.7otB1JMBU_OFkz-8ONsL9iHujWcpMoFXl0UJCZCTATA",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"amount\": 85000,\r\n  \"description\": \"Admin corrected: salary + bonus included\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/dashboard/trends?year=2024",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "dashboard",
+                "trends"
+              ],
+              "query": [
+                {
+                  "key": "year",
+                  "value": "2024"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update ANY Transaction (even other users') Copy",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI5MmY2MDg1MTZkMDZiZjczNWFhNiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NTQwNzg3NiwiZXhwIjoxNzc1NTgwNjc2fQ.7otB1JMBU_OFkz-8ONsL9iHujWcpMoFXl0UJCZCTATA",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"amount\": 85000,\r\n  \"description\": \"Admin corrected: salary + bonus included\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/transactions/69d290da08516d06bf735a7d",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "transactions",
+                "69d290da08516d06bf735a7d"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete a User (Permanent)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI5MmY2MDg1MTZkMDZiZjczNWFhNiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NTQwNzg3NiwiZXhwIjoxNzc1NTgwNjc2fQ.7otB1JMBU_OFkz-8ONsL9iHujWcpMoFXl0UJCZCTATA",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"role\": \"viewer\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/users/69d281f508516d06bf735a49",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "69d281f508516d06bf735a49"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Toggle User Status (Activate / Deactivate)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZDI5MmY2MDg1MTZkMDZiZjczNWFhNiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NTQwNzg3NiwiZXhwIjoxNzc1NTgwNjc2fQ.7otB1JMBU_OFkz-8ONsL9iHujWcpMoFXl0UJCZCTATA",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"role\": \"viewer\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/v1/users/69d281f508516d06bf735a49/status",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "69d281f508516d06bf735a49",
+                "status"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
