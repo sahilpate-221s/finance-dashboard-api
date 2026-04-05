@@ -264,8 +264,9 @@ The API implements two-tiered IP-based rate limiting using `express-rate-limit` 
 ## Section 2: Complete API Reference
 
 ```
-Base URL:       http://localhost:5000/api/v1
-Authentication: Authorization: Bearer <token>
+Base URL (Local):       http://localhost:5000/api/v1
+Base URL (Live):        https://finance-dashboard-api-1vyf.onrender.com/api/v1
+Authentication:         Authorization: Bearer <token>
 Content-Type:   application/json (for all POST/PUT/PATCH requests)
 ```
 

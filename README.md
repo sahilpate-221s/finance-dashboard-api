@@ -135,6 +135,33 @@ The system implements three roles with progressively increasing access levels:
 
 ---
 
+## API Documentation
+
+A complete API reference and system design document 
+is available in the file:
+
+📄 [API_DOCUMENTATION.md](./API_DOCUMENTATION.md)
+
+This file covers:
+- Full system architecture diagram
+- Folder structure and responsibilities
+- Role and permission matrix
+- Database schema for all collections
+- JWT authentication flow step by step
+- Error handling and soft delete strategy
+- Rate limiting configuration
+- Complete API reference for all 18+ endpoints
+  with request bodies, response shapes, 
+  and error codes
+- HTTP status code reference
+
+You can also test all endpoints using the Postman 
+collection included in the repository:
+📦 `postman_collection.json`
+Import it via Postman → File → Import → select file.
+
+---
+
 ## API Reference
 
 ### Auth — `/api/v1/auth`
