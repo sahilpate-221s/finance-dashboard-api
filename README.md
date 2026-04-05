@@ -173,15 +173,11 @@ The system implements three roles with progressively increasing access levels:
 
 ## Assumptions Made
 
-1. **A single JWT token is sufficient for session management.** The API does not implement refresh tokens or token blacklisting on logout. Once issued, a token remains valid until its expiry. This keeps the implementation stateless and straightforward for a finance dashboard context where sessions are not expected to last days.
-
-2. **Transaction ownership is determined at creation time and cannot be transferred.** The `createdBy` field is set once during creation from `req.user._id` and is never exposed as an updatable field, even to admins. Ownership reassignment is not a business requirement for this system.
-
-3. **Soft deletion is only available for transactions, not for users.** User accounts are permanently deleted because orphaned user records with foreign-key references (e.g., transactions) are more problematic than simply removing the user. Transactions are soft-deleted to preserve financial history.
-
-4. **All monetary amounts are stored and returned as raw numbers without currency conversion.** The API assumes all transactions are recorded in a single unified currency. Multi-currency support would require an additional `currency` field and a conversion layer.
-
-5. **The `date` field on a transaction represents the actual financial date, not the creation timestamp.** This allows users to back-date transactions (e.g., entering last month's grocery bill today), which is a common real-world requirement for personal finance tools.
+1. **Stateless Auth:** A single JWT token without a refresh strategy is sufficient for a simplified dashboard assignment.
+2. **Fixed Ownership:** Transaction ownership (`createdBy`) is set once at creation and cannot be transferred, even by admins.
+3. **Selective Deletion:** Transactions are soft-deleted to preserve history, but users are hard-deleted to prevent orphaned record issues.
+4. **Single Currency:** All amounts are raw numbers; no multi-currency conversion layer is required.
+5. **Back-dated Entries:** The transaction `date` represents the actual financial date occurring in the real world, not the timestamp of when the record was created.
 
 ---
 
